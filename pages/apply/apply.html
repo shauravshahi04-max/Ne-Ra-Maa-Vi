@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply Now | Nepal Rastriya School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+
+<section class="apply-container">
+
+  <h1>Application Form</h1>
+  <p class="subtitle">
+    Apply for admission at <strong>Nepal Rastriya School, Kushe-7, Jajarkot</strong>
+  </p>
+
+  <form id="applyForm">
+
+    <!-- PROGRAM -->
+    <div class="section">
+      <h2>Stream / Programme</h2>
+      <select required>
+          <option value="">Stream/Subject</option>
+          <option>Science</option>
+          <option>Management</option>
+          <option>Fine Arts</option>
+        </select>
+    </div>
+
+    <!-- PERSONAL INFO -->
+    <div class="section">
+      <h2>Personal Information</h2>
+
+      <div class="grid-3">
+        <input type="text" placeholder="First Name" required>
+        <input type="text" placeholder="Middle Name">
+        <input type="text" placeholder="Last Name" required>
+      </div>
+
+      <div class="grid-2">
+        <input type="date" required>
+        <select required>
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="grid-2">
+        <input type="email" placeholder="Email">
+        <input type="text" placeholder="Mobile Number" required>
+      </div>
+
+      <input type="text" placeholder="Address" required>
+    </div>
+
+    <!-- ACADEMIC -->
+    <div class="section">
+      <h2>Academic Information</h2>
+
+      <input type="text" placeholder="Previous School Name">
+      <div class="grid-2">
+        <input type="text" placeholder="Previous Grade">
+        <input type="text" placeholder="Percentage / GPA">
+      </div>
+    </div>
+
+    <!-- PARENTS -->
+    <div class="section">
+      <h2>Parent's Information</h2>
+
+      <div class="grid-2">
+        <input type="text" placeholder="Father's Name">
+        <input type="text" placeholder="Father's Mobile">
+      </div>
+
+      <div class="grid-2">
+        <input type="text" placeholder="Mother's Name">
+        <input type="text" placeholder="Mother's Mobile">
+      </div>
+    </div>
+
+    <!-- OTHERS -->
+    <div class="section">
+      <h2>Other Queries</h2>
+      <textarea placeholder="Write your query (if any)"></textarea>
+    </div>
+
+    <button type="submit">Submit Application</button>
+
+  </form>
+
+</section>
+
+<script src="apply.js"></script>
+</body>
+</html>

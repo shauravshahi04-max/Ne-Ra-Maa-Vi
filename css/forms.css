@@ -1,0 +1,242 @@
+body {
+  background: linear-gradient(135deg, #1e4fa3, #0d6efd);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.login-container {
+  background: #fff;
+  padding: 40px;
+  width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: slideUp 0.6s ease;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e4fa3;
+}
+
+.login-container.admin h2 {
+  color: #c0392b;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.login-container input:focus {
+  border-color: #1e4fa3;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: #1e4fa3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #0d6efd;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.switch {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #1e4fa3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+/* =========================
+   GOOGLE FONT
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+      rgba(20, 60, 120, 0.75),
+      rgba(20, 60, 120, 0.75)
+    ),
+    url("/assets/images/bg.png") no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   LOGIN / SIGNUP BOX
+========================= */
+.login-container {
+  width: 380px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 35px 30px;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  animation: fadeUp 0.6s ease;
+}
+
+/* Admin special highlight */
+.login-container.admin {
+  border-top: 5px solid #c62828;
+}
+
+/* =========================
+   TITLE
+========================= */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* =========================
+   FORM
+========================= */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.login-container input {
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.login-container input:focus {
+  outline: none;
+  border-color: #1e4fa3;
+  box-shadow: 0 0 0 2px rgba(30, 79, 163, 0.2);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.login-container button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1e4fa3, #2563eb);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.login-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 79, 163, 0.35);
+}
+
+/* =========================
+   SWITCH LOGIN / SIGNUP
+========================= */
+.switch {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.switch a {
+  color: #1e4fa3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ADMIN BUTTON COLOR
+========================= */
+.admin button {
+  background: linear-gradient(135deg, #c62828, #e53935);
+}
+
+.admin button:hover {
+  box-shadow: 0 8px 20px rgba(198, 40, 40, 0.35);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 450px) {
+  .login-container {
+    width: 90%;
+    padding: 28px 22px;
+  }
+}
