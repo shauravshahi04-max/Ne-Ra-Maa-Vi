@@ -1,69 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin-sites</title>
-    <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <h2>Admin Panel</h2>
+  <nav class="admin-navbar">
+  <div class="nav-left">
+    <span class="admin-title">Admin Panel</span>
+  </div>
 
-<input id="studentId" placeholder="Student ID (STD101)">
-<input id="class" placeholder="Class">
-<input id="section" placeholder="Section">
-<input id="attendance" type="number" placeholder="Attendance %">
-<select id="fees">
-  <option>Paid</option>
-  <option>Unpaid</option>
-</select>
+  <ul class="nav-links">
+    <li class="active"><a href="admin.html">Home</a></li>
 
-<button onclick="updateStudent()">Update Student</button>
-<script>
-  if (
-    localStorage.getItem("isLoggedIn") !== "true" ||
-    localStorage.getItem("role") !== "admin"
-  ) {
-    window.location.href = "/pages/auth/admin-login.html";
-  }
+    <!-- Classes Dropdown -->
+    <li class="dropdown">
+      <a href="#">Classes ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Class 1</a></li>
+        <li><a href="#">Class 2</a></li>
+        <li><a href="#">Class 3</a></li>
+        <li><a href="#">Class 4</a></li>
+        <li><a href="#">Class 5</a></li>
+        <li><a href="#">Class 6</a></li>
+        <li><a href="#">Class 7</a></li>
+        <li><a href="#">Class 8</a></li>
+        <li><a href="#">Class 9</a></li>
+        <li><a href="#">Class 10</a></li>
+      </ul>
+    </li>
 
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("adminId").innerText =
-      localStorage.getItem("userId");
-  });
-</script>
-
-<h2>Welcome, Admin <span id="adminId"></span></h2>
-<button onclick="adminLogout()">Logout</button>
-
-<script>
-  if (
-    localStorage.getItem("isLoggedIn") !== "true" ||
-    localStorage.getItem("role") !== "admin"
-  ) {
-    window.location.href = "/pages/auth/admin-login.html";
-  }
-
-  function updateStudent() {
-    const id = document.getElementById("studentId").value;
-    const records = JSON.parse(localStorage.getItem("studentRecords")) || {};
-
-    if (!records[id]) {
-      alert("Student not found");
-      return;
-    }
-
-    records[id].class = document.getElementById("class").value;
-    records[id].section = document.getElementById("section").value;
-    records[id].attendance =
-      Number(document.getElementById("attendance").value);
-    records[id].feesStatus =
-      document.getElementById("fees").value;
-
-    localStorage.setItem("studentRecords", JSON.stringify(records));
-    alert("Student data updated");
-  }
-</script>
+    <li><a href="#">Teachers</a></li>
+    <li><a href="#">College Result</a></li>
+    <li><a href="notice-board.html">Notice Board</a></li>
+    <li><a href="update-student.html">Update students</a></li>
+  </ul>
+</nav>
 
 </body>
 </html>

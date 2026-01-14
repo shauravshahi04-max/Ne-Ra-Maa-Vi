@@ -49,3 +49,29 @@ function login() {
   window.location.href = `/pages/dashboard/${user.role}.html`;
 }
 
+function login(event, role) {
+  event.preventDefault();
+
+  const id = document.getElementById(`${role}Id`).value;
+  const password = document.getElementById(`${role}Password`).value;
+
+  const storageKey = role + "s";
+  const users = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  const validUser = users.find(
+    u => u.id === id && u.password === password
+  );
+
+  // ✅ FIRST validate
+  if (!validUser) {
+    alert("Invalid ID or Password");
+    return;
+  }
+
+  // ✅ THEN login + redirect
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("role", role);
+  localStorage.setItem("userId", id);
+
+  window.location.href = `/pages/dashboard/student/student.html`;
+}

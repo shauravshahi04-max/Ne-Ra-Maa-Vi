@@ -126,24 +126,16 @@
 </section>
 
 <section class="notice-section">
-  <div class="notice-card">
-    <h3>Notice Board</h3>
+  <div class="notice-board">
+  <h3>Notice Board</h3>
+  <p id="noticeContent"></p>
+</div>
 
-    <ul class="notice-list">
-      <li>
-        <span class="date">June 29, 2025</span>
-        <a href="#">Important Notice for All the Students</a>
-      </li>
-      <li>
-        <span class="date">June 16, 2025</span>
-        <a href="#">Important Notice for All the Students</a>
-      </li>
-      <li>
-        <span class="date">September 5, 2024</span>
-        <a href="#">Important Notice for All Students</a>
-      </li>
-    </ul>
-  </div>
+<script>
+  document.getElementById("noticeContent").innerText =
+    localStorage.getItem("noticeBoard") || "No notices available.";
+</script>
+
 </section>
 
 

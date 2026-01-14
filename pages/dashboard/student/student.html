@@ -15,7 +15,19 @@
       <li>Section: <span id="section"></span></li>
       <li>Attendance: <span id="attendance"></span>%</li>
       <li>Fees: <span id="fees"></span></li>
+      <li>Result: <span id="result"></span></li>
     </ul>
+    <section class="notice-section">
+      <div class="notice-board">
+        <h3>Notice Board</h3>
+        <p id="noticeContent"></p>
+      </div>
+
+      <script>
+        document.getElementById("noticeContent").innerText =
+          localStorage.getItem("noticeBoard") || "No notices available.";
+      </script>
+    </section>
 
     <script>
       if (
@@ -31,10 +43,11 @@
 
       document.getElementById("studentId").innerText = studentId;
       document.getElementById("class").innerText =
-        student.class || "Not Assigned";
+        student.class;
       document.getElementById("section").innerText = student.section || "-";
       document.getElementById("attendance").innerText = student.attendance;
       document.getElementById("fees").innerText = student.feesStatus;
+      document.getElementById("result").innerText = student.results.final;
     </script>
   </body>
 </html>

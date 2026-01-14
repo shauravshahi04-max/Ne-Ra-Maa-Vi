@@ -10,11 +10,13 @@ function signup(event, role) {
   const storageKey = role + "s";
   const users = JSON.parse(localStorage.getItem(storageKey)) || [];
 
+  // Already exists check
   if (users.some(u => u.id === id)) {
     alert("Account already exists. Please login.");
     return;
   }
 
+  // Save login credentials
   users.push({ id, password });
   localStorage.setItem(storageKey, JSON.stringify(users));
 
@@ -22,13 +24,15 @@ function signup(event, role) {
      CREATE STUDENT RECORD (ONCE)
   =============================== */
   if (role === "student") {
+    const studentClass =
+      document.getElementById("studentClass")?.value || "";
+
     const studentRecords =
       JSON.parse(localStorage.getItem("studentRecords")) || {};
 
     studentRecords[id] = {
       id,
-      name: "",
-      class: "",
+      class: studentClass,
       section: "",
       attendance: 0,
       results: {},
@@ -41,13 +45,13 @@ function signup(event, role) {
     );
   }
 
+  // Session
   localStorage.setItem("isLoggedIn", "true");
   localStorage.setItem("role", role);
   localStorage.setItem("userId", id);
 
-  window.location.href = `/pages/dashboard/student/student.html`;
+  window.location.href = `/pages/dashboard/${role}/${role}.html`;
 }
-
 
 
 /* =========================
@@ -57,27 +61,27 @@ function login(event, role) {
   event.preventDefault();
 
   const id = document.getElementById(`${role}Id`).value;
-  const password = document.getElementById(`${role}Password`).value;
+  const password =
+    document.getElementById(`${role}Password`) ||
+    document.getElementById("password");
 
   const storageKey = role + "s";
   const users = JSON.parse(localStorage.getItem(storageKey)) || [];
 
   const validUser = users.find(
-    u => u.id === id && u.password === password
+    u => u.id === id && u.password === password.value
   );
 
-  // ✅ FIRST validate
   if (!validUser) {
     alert("Invalid ID or Password");
     return;
   }
 
-  // ✅ THEN login + redirect
   localStorage.setItem("isLoggedIn", "true");
   localStorage.setItem("role", role);
   localStorage.setItem("userId", id);
 
-  window.location.href = `/pages/dashboard/student/student.html`;
+  window.location.href = `/pages/dashboard/${role}/${role}.html`;
 }
 
 
@@ -88,4 +92,3 @@ function logout() {
   localStorage.clear();
   window.location.href = "/index.html";
 }
-

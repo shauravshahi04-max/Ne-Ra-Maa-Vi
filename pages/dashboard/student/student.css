@@ -142,3 +142,140 @@ body {
   margin-bottom: 10px;
   font-size: 15px;
 }
+/* ===============================
+   GLOBAL RESET & VARIABLES
+=============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+:root {
+  --primary: #1e3a8a;
+  --secondary: #2563eb;
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --success: #16a34a;
+  --warning: #d97706;
+  --radius: 14px;
+}
+
+/* ===============================
+   BODY
+=============================== */
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 30px;
+}
+
+/* ===============================
+   HEADER / WELCOME
+=============================== */
+h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: var(--primary);
+}
+
+#studentId {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+/* ===============================
+   STUDENT INFO CARD
+=============================== */
+ul {
+  list-style: none;
+  background: var(--card);
+  max-width: 520px;
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-size: 15px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li span {
+  font-weight: 600;
+}
+
+/* Highlight important values */
+#attendance {
+  color: var(--success);
+}
+
+#fees {
+  color: var(--warning);
+}
+
+/* ===============================
+   NOTICE BOARD SECTION
+=============================== */
+.notice-section {
+  max-width: 520px;
+}
+
+.notice-board {
+  background: linear-gradient(
+    135deg,
+    var(--secondary),
+    var(--primary)
+  );
+  color: #ffffff;
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.notice-board:hover {
+  transform: translateY(-4px);
+}
+
+.notice-board h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.notice-board p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  ul,
+  .notice-section {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}

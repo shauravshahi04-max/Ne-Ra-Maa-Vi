@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Notice</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<h2>Update Notice Board</h2>
+
+<div class="admin-section">
+  <textarea id="noticeText" rows="6" placeholder="Write notice here..."></textarea>
+  <button onclick="saveNotice()">Save Notice</button>
+</div>
+
+<script>
+  if (
+    localStorage.getItem("isLoggedIn") !== "true" ||
+    localStorage.getItem("role") !== "admin"
+  ) {
+    window.location.href = "/pages/auth/admin-login.html";
+  }
+
+  // load old notice
+  document.getElementById("noticeText").value =
+    localStorage.getItem("noticeBoard") || "";
+
+  function saveNotice() {
+    const text = document.getElementById("noticeText").value;
+    localStorage.setItem("noticeBoard", text);
+    alert("Notice updated successfully");
+  }
+</script>
+
+</body>
+</html>
