@@ -1,0 +1,64 @@
+<script>
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const role = localStorage.getItem("role");
+
+  if (!isLoggedIn || role !== "teacher") {
+    window.location.href = "/auth/teacher-login.html/";
+  }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+
+  <link rel="stylesheet" href="teacher.css" />
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <h2>Student Dashboard</h2>
+
+    <div class="top-actions">
+      <span class="user">👨‍🎓 Teacher</span>
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="dashboard">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <ul>
+        <li class="active">🏠 Home</li>
+        <li>📘 About</li>
+        <li>📊 Attendance</li>
+        <li>📝 Results</li>
+        <li>📚 Homework</li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <h1>Welcome Back 🎉</h1>
+      <p class="subtitle">
+        Access your attendance, results, homework, and profile information.
+      </p>
+
+      <div class="cards">
+        <div class="card">📊 Attendance</div>
+        <div class="card">📝 Results</div>
+        <div class="card">📚 Homework</div>
+        <div class="card">👤 Profile</div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

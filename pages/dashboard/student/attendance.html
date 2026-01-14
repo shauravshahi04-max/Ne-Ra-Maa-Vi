@@ -1,0 +1,46 @@
+<script>
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const role = localStorage.getItem("role");
+  if (!isLoggedIn || role !== "student") {
+    window.location.href = "/auth/student-login.html";
+  }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance</title>
+  <link rel="stylesheet" href="student.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+  <ul>
+    <a href="student.html"><li class="active">🏠 Home</li></a>
+    <a href="attendance.html"><li>📊 Attendance</li></a>
+    <a href="results.html"><li>📝 Results</li></a>
+    <a href="profile.html"><li>👤 Profile</li></a>
+  </ul>
+</aside>
+
+  <header class="topbar">
+    <h2>Attendance</h2>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="dashboard">
+    <!-- sidebar here -->
+
+    <main class="content">
+      <h1>Your Attendance</h1>
+
+      <canvas id="attendanceChart" width="250" height="250"></canvas>
+
+      <p class="subtitle">Present: <b>82%</b></p>
+    </main>
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/attendance.js"></script>
+</body>
+</html>

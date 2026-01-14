@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Student Login</title>
-  <link rel="stylesheet" href="/css/forms.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Login | School Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div class="login-container">
-  <h2>Student Login</h2>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/forms.css" />
+  </head>
+  <body>
+    <div class="login-wrapper">
+      <div class="login-card">
+        <h2>Student Login</h2>
+        <p class="subtitle">Login using your registered Student ID</p>
 
-  <form>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
-    <button>Login</button>
-  </form>
+        <form id="studentLoginForm" onsubmit="login(event, 'student')">
+          <input
+            type="text"
+            id="studentId"
+            placeholder="Student ID (e.g. STD101)"
+            required
+          />
 
-  <p class="switch">
-    New student?
-    <a href="/pages/auth/student-signup.html">Create Account</a>
-  </p>
-</div>
+          <input
+            type="password"
+            id="studentPassword"
+            placeholder="Password"
+            required
+          />
 
-</body>
+          <button onclick="login('student')">Log In</button>
+        </form>
+
+        <p class="switch">
+          New student?
+          <a href="/pages/auth/student-signup.html">Create Account</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="/js/auth.js"></script>
+  </body>
 </html>

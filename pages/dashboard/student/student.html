@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet" href="student.css" />
+  </head>
+  <body>
+    <h2>Welcome, <span id="studentId"></span></h2>
+
+    <ul>
+      <li>Class: <span id="class"></span></li>
+      <li>Section: <span id="section"></span></li>
+      <li>Attendance: <span id="attendance"></span>%</li>
+      <li>Fees: <span id="fees"></span></li>
+    </ul>
+
+    <script>
+      if (
+        localStorage.getItem("isLoggedIn") !== "true" ||
+        localStorage.getItem("role") !== "student"
+      ) {
+        window.location.href = "/pages/auth/student-login.html";
+      }
+
+      const studentId = localStorage.getItem("userId");
+      const records = JSON.parse(localStorage.getItem("studentRecords")) || {};
+      const student = records[studentId];
+
+      document.getElementById("studentId").innerText = studentId;
+      document.getElementById("class").innerText =
+        student.class || "Not Assigned";
+      document.getElementById("section").innerText = student.section || "-";
+      document.getElementById("attendance").innerText = student.attendance;
+      document.getElementById("fees").innerText = student.feesStatus;
+    </script>
+  </body>
+</html>

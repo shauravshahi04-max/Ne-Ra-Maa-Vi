@@ -1,7 +1,7 @@
 const auth = JSON.parse(localStorage.getItem("auth"));
 
 if (!auth || !auth.loggedIn) {
-  window.location.href = "/pages/auth/login.html";
+  window.location.href = "/pages/auth/student-login.html";
 }
 
 // ROLE-BASED ACCESS CONTROL

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Student | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<h2>Update Student Record</h2>
+
+<div class="admin-section">
+  <input id="studentId" placeholder="Student ID (STD101)" required>
+  <input id="class" placeholder="Class">
+  <input id="section" placeholder="Section">
+  <input id="attendance" type="number" placeholder="Attendance %">
+  
+  <select id="fees">
+    <option value="Paid">Paid</option>
+    <option value="Unpaid">Unpaid</option>
+  </select>
+
+  <button onclick="updateStudent()">Update Student</button>
+</div>
+
+<button onclick="adminLogout()">Logout</button>
+
+<script src="/js/admin.js"></script>
+
+<script>
+  // Protect page
+  if (
+    localStorage.getItem("isLoggedIn") !== "true" ||
+    localStorage.getItem("role") !== "admin"
+  ) {
+    window.location.href = "/pages/auth/admin-login.html";
+  }
+
+  function updateStudent() {
+    const id = document.getElementById("studentId").value;
+    const records =
+      JSON.parse(localStorage.getItem("studentRecords")) || {};
+
+    if (!records[id]) {
+      alert("Student not found");
+      return;
+    }
+
+    records[id].class =
+      document.getElementById("class").value;
+    records[id].section =
+      document.getElementById("section").value;
+    records[id].attendance =
+      Number(document.getElementById("attendance").value);
+    records[id].feesStatus =
+      document.getElementById("fees").value;
+
+    localStorage.setItem(
+      "studentRecords",
+      JSON.stringify(records)
+    );
+
+    alert("Student data updated successfully");
+  }
+</script>
+
+</body>
+</html>

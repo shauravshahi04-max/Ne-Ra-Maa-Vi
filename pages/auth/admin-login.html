@@ -10,17 +10,15 @@
 <div class="login-container admin">
   <h2>Admin Login</h2>
 
-  <form>
-    <input type="text" placeholder="Admin ID" required>
-    <input type="password" placeholder="Password" required>
-    <button>Login</button>
-  </form>
+  <form onsubmit="adminLogin(event, 'admin')">
+  <input id="adminId" placeholder="Admin ID" required>
+  <input id="adminPassword" type="password" required>
 
-  <p class="switch">
-    New admin?
-    <a href="/pages/auth/admin-signup.html">Register</a>
-  </p>
-</div>
+  <button type="submit" onclick="login(admin)">Login</button>
+</form>
+
+<script src="/pages/dashboard/admin/admin.js"></script>
+
 
 </body>
 </html>

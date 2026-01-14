@@ -763,3 +763,37 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+body.dark {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+/* Navbar */
+body.dark .top-navbar,
+body.dark .main-navbar {
+  background: #020617;
+}
+
+/* Dropdowns */
+body.dark .dropdown-menu {
+  background: #020617;
+  border-color: #334155;
+}
+
+/* Cards / sections */
+body.dark .apply-container,
+body.dark .notice-board,
+body.dark .welcome-section {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+/* Inputs */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+}

@@ -1,51 +1,91 @@
-// FAKE DATABASE (acts like backend)
-const USERS_DB = [
-  { id: 1, role: "student", username: "student1", password: "1234" },
-  { id: 2, role: "teacher", username: "teacher1", password: "1234" },
-  { id: 3, role: "admin",   username: "admin",    password: "admin123" }
-];
+/* =========================
+   SIGNUP FUNCTION
+========================= */
+function signup(event, role) {
+  event.preventDefault();
 
-// Read role from URL (?role=student)
-const params = new URLSearchParams(window.location.search);
-const roleFromURL = params.get("role");
+  const id = document.getElementById(`${role}Id`).value;
+  const password = document.getElementById(`${role}Password`).value;
 
-if (roleFromURL) {
-  document.getElementById("role").value = roleFromURL;
+  const storageKey = role + "s";
+  const users = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  if (users.some(u => u.id === id)) {
+    alert("Account already exists. Please login.");
+    return;
+  }
+
+  users.push({ id, password });
+  localStorage.setItem(storageKey, JSON.stringify(users));
+
+  /* ===============================
+     CREATE STUDENT RECORD (ONCE)
+  =============================== */
+  if (role === "student") {
+    const studentRecords =
+      JSON.parse(localStorage.getItem("studentRecords")) || {};
+
+    studentRecords[id] = {
+      id,
+      name: "",
+      class: "",
+      section: "",
+      attendance: 0,
+      results: {},
+      feesStatus: "Unpaid"
+    };
+
+    localStorage.setItem(
+      "studentRecords",
+      JSON.stringify(studentRecords)
+    );
+  }
+
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("role", role);
+  localStorage.setItem("userId", id);
+
+  window.location.href = `/pages/dashboard/student/student.html`;
 }
 
-function login() {
-  const role = document.getElementById("role").value;
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
 
-  // Validation
-  if (!username || !password) {
-    alert("All fields required");
-    return;
-  }
 
-  // Backend-style user lookup
-  const user = USERS_DB.find(
-    u =>
-      u.role === role &&
-      u.username === username &&
-      u.password === password
+/* =========================
+   LOGIN FUNCTION
+========================= */
+function login(event, role) {
+  event.preventDefault();
+
+  const id = document.getElementById(`${role}Id`).value;
+  const password = document.getElementById(`${role}Password`).value;
+
+  const storageKey = role + "s";
+  const users = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  const validUser = users.find(
+    u => u.id === id && u.password === password
   );
 
-  if (!user) {
-    alert("Invalid credentials ❌");
+  // ✅ FIRST validate
+  if (!validUser) {
+    alert("Invalid ID or Password");
     return;
   }
 
-  // Create SESSION (like backend session/JWT)
-  localStorage.setItem("auth", JSON.stringify({
-    loggedIn: true,
-    userId: user.id,
-    role: user.role,
-    username: user.username
-  }));
+  // ✅ THEN login + redirect
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("role", role);
+  localStorage.setItem("userId", id);
 
-  // Redirect by role
-  window.location.href = `/pages/dashboard/${user.role}.html`;
+  window.location.href = `/pages/dashboard/student/student.html`;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+function logout() {
+  localStorage.clear();
+  window.location.href = "/index.html";
 }
 
